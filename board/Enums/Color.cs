@@ -1,7 +1,13 @@
-namespace PROJETO_XADREZ.tabuleiro.Enums
+namespace board.Enums
 {
-    public class Cor
+    enum Color
     {
-        
+        Black,
+        White,
+        Blue,
+        Red,
+        Orange,
+        Yellow,
+        Green
     }
 }

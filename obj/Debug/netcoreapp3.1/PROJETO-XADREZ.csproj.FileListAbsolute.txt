@@ -1,0 +1,13 @@
+/home/glauber/Documentos/Projetos C#/UDEMY/PROJETO-XADREZ/bin/Debug/netcoreapp3.1/PROJETO-XADREZ
+/home/glauber/Documentos/Projetos C#/UDEMY/PROJETO-XADREZ/bin/Debug/netcoreapp3.1/PROJETO-XADREZ.deps.json
+/home/glauber/Documentos/Projetos C#/UDEMY/PROJETO-XADREZ/bin/Debug/netcoreapp3.1/PROJETO-XADREZ.runtimeconfig.json
+/home/glauber/Documentos/Projetos C#/UDEMY/PROJETO-XADREZ/bin/Debug/netcoreapp3.1/PROJETO-XADREZ.runtimeconfig.dev.json
+/home/glauber/Documentos/Projetos C#/UDEMY/PROJETO-XADREZ/bin/Debug/netcoreapp3.1/PROJETO-XADREZ.dll
+/home/glauber/Documentos/Projetos C#/UDEMY/PROJETO-XADREZ/bin/Debug/netcoreapp3.1/PROJETO-XADREZ.pdb
+/home/glauber/Documentos/Projetos C#/UDEMY/PROJETO-XADREZ/obj/Debug/netcoreapp3.1/PROJETO-XADREZ.csprojAssemblyReference.cache
+/home/glauber/Documentos/Projetos C#/UDEMY/PROJETO-XADREZ/obj/Debug/netcoreapp3.1/PROJETO-XADREZ.csproj.CoreCompileInputs.cache
+/home/glauber/Documentos/Projetos C#/UDEMY/PROJETO-XADREZ/obj/Debug/netcoreapp3.1/PROJETO-XADREZ.AssemblyInfoInputs.cache
+/home/glauber/Documentos/Projetos C#/UDEMY/PROJETO-XADREZ/obj/Debug/netcoreapp3.1/PROJETO-XADREZ.AssemblyInfo.cs
+/home/glauber/Documentos/Projetos C#/UDEMY/PROJETO-XADREZ/obj/Debug/netcoreapp3.1/PROJETO-XADREZ.dll
+/home/glauber/Documentos/Projetos C#/UDEMY/PROJETO-XADREZ/obj/Debug/netcoreapp3.1/PROJETO-XADREZ.pdb
+/home/glauber/Documentos/Projetos C#/UDEMY/PROJETO-XADREZ/obj/Debug/netcoreapp3.1/PROJETO-XADREZ.genruntimeconfig.cache

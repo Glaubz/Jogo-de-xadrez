@@ -1,4 +1,5 @@
 ﻿using System;
+using board;
 
 namespace PROJETO_XADREZ
 {
@@ -6,7 +7,9 @@ namespace PROJETO_XADREZ
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Board board = new Board(8, 8);
+
+            Screen.PrintScreen(board);
         }
     }
 }
