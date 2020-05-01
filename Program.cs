@@ -11,11 +11,17 @@ namespace PROJETO_XADREZ
         {
             Board board = new Board(8, 8);
 
-            board.PutPawn(new Tower(board, Color.Black), new Position(0,0));
-            board.PutPawn(new Tower(board, Color.Black), new Position(1,3));
-            board.PutPawn(new King(board, Color.Black), new Position(2,4));
+            try{
+                board.putPiece(new Tower(board, Color.Black), new Position(0,0));
+                board.putPiece(new Tower(board, Color.Black), new Position(0,0));
+                board.putPiece(new King(board, Color.Black), new Position(2,4));
 
-            Screen.PrintScreen(board);
+                Screen.PrintScreen(board);
+            }
+            catch(BoardException e){
+                System.Console.WriteLine(e.Message);
+            }
+
         }
     }
 }
