@@ -5,11 +5,11 @@ namespace board
         public static void PrintScreen(Board board){
             for(int i=0; i<board.lines; i++){
                 for(int j=0; j<board.columns; j++){
-                    if(board.OnePawn(i, j) == null){
+                    if(board.OnePiece(i, j) == null){
                         System.Console.Write("- ");
                     }
                     else{
-                        System.Console.WriteLine(board.OnePawn(i, j));
+                        System.Console.Write(board.OnePiece(i, j) + " ");
                     }
                 }
                 System.Console.WriteLine(); //Quebrar linha
