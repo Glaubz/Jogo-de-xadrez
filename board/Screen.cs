@@ -1,5 +1,6 @@
 using board.Enums;
 using System;
+using chess;
 
 namespace board
 {
@@ -20,6 +21,13 @@ namespace board
                 System.Console.WriteLine(); //Quebrar linha
             }
             System.Console.WriteLine("  a b c d e f g h");
+        }
+
+        public static ChessPosition readChessPosition(){
+            string s = Console.ReadLine();
+            int line = int.Parse(s[0] + "");
+            char column = s[1];
+            return new ChessPosition(line, column);
         }
 
         public static void printPiece(Piece piece){

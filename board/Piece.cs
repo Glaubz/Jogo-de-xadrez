@@ -15,5 +15,10 @@ namespace board
             this.color = color;
             qtMovements = 0;
         }
+
+        public void incrementQteMovements(){
+            qtMovements++;
+        }
+
     }
 }

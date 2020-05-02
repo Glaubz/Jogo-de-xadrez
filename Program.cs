@@ -1,6 +1,7 @@
 ﻿using board;
 using board.Enums;
 using chess;
+using System;
 
 namespace PROJETO_XADREZ
 {
@@ -9,15 +10,21 @@ namespace PROJETO_XADREZ
         static void Main(string[] args)
         {
             try{
-                Board board = new Board(8, 8);
+                ChessMatch match = new ChessMatch();
 
-                board.putPiece(new Tower(board, Color.Black), new Position(0,0));
-                board.putPiece(new Tower(board, Color.Black), new Position(1,3));
-                board.putPiece(new King(board, Color.Black), new Position(0,2));
+                while(!match.Finish){
+                    Console.Clear();
+                    Screen.printBoard(match.board);
 
-                board.putPiece(new Tower(board, Color.White), new Position(3,5));
+                    System.Console.Write("\nOrigin: ");
+                    Position origin = Screen.readChessPosition().toPosition();
+                    System.Console.Write("Destiny: ");
+                    Position destiny = Screen.readChessPosition().toPosition();
 
-                Screen.printBoard(board);
+                    match.executeMovement(origin, destiny);
+                }
+
+                Screen.printBoard(match.board);
             }
             catch(BoardException e){
                 System.Console.WriteLine(e.Message);

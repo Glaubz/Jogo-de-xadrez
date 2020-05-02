@@ -33,6 +33,16 @@ namespace board
             piece.Position = position; //Guarda a posição em que a peça esta
         }
 
+        public Piece removePiece(Position position){
+            if(Pieces[position.line, position.column] == null){
+                return null;
+            }
+            Piece aux = onePiece(position);
+            aux.Position = null;
+            Pieces[position.line, position.column] = null;
+            return aux;
+        }
+
         public bool validPosition(Position position){ //Método para verificar se o numero da linha e/ou da coluna existe no tabuleiro
             if(position.line < 0 || position.line >= Lines || position.column < 0 || position.column >= Columns){
                 return false;
