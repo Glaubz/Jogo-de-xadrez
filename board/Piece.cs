@@ -2,7 +2,7 @@ using board.Enums;
 
 namespace board
 {
-    class Piece
+    abstract class Piece
     {
         public Position Position { get; set; }
         public Color color { get; protected set; }
@@ -19,6 +19,8 @@ namespace board
         public void incrementQteMovements(){
             qtMovements++;
         }
+
+        public abstract bool[,] possibleMovements();
 
     }
 }

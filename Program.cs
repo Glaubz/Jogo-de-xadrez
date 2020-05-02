@@ -18,7 +18,12 @@ namespace PROJETO_XADREZ
 
                     System.Console.Write("\nOrigin: ");
                     Position origin = Screen.readChessPosition().toPosition();
-                    System.Console.Write("Destiny: ");
+
+                    bool[,] possibleMovements = match.board.onePiece(origin).possibleMovements();
+                    Console.Clear();
+                    Screen.printBoard(match.board, possibleMovements);
+
+                    System.Console.Write("\nDestiny: ");
                     Position destiny = Screen.readChessPosition().toPosition();
 
                     match.executeMovement(origin, destiny);
