@@ -21,7 +21,7 @@ namespace chess
         public override bool[,] possibleMovements(){
             bool[,] matrix = new bool[board.Lines, board.Columns];
 
-            Position position = new Position(0,0);
+            Position position = new Position(0, 0);
 
             //above
             position.defineValues(position.line - 1, position.column);
@@ -74,7 +74,6 @@ namespace chess
             return matrix;
 
         }
-
 
     }
 }

@@ -7,7 +7,7 @@ namespace chess
         public int line { get; set; }
         public char column { get; set; }
 
-        public ChessPosition(int line, char column){
+        public ChessPosition(char column, int line){
             this.line = line;
             this.column = column;
         }
