@@ -15,9 +15,7 @@ namespace PROJETO_XADREZ
 
                     try{
                         Console.Clear();
-                        Screen.printBoard(match.board);
-                        System.Console.WriteLine("\nRound: " + match._round);
-                        System.Console.WriteLine("Waiting " + match._currentPlayer + " move");
+                        Screen.printMatch(match);
 
                         System.Console.Write("\nOrigin: ");
                         Position origin = Screen.readChessPosition().toPosition();

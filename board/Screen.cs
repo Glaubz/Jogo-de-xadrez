@@ -2,11 +2,40 @@ using board;
 using board.Enums;
 using System;
 using chess;
+using System.Collections.Generic;
 
 namespace board
 {
     class Screen
     {
+        public static void printMatch(ChessMatch match){
+            printBoard(match.board);
+            Console.WriteLine();
+            printCapturedPieces(match);
+            System.Console.WriteLine("\nRound: " + match._round);
+            System.Console.WriteLine("Waiting " + match._currentPlayer + " move");
+        }
+
+        public static void printCapturedPieces(ChessMatch match){
+            Console.WriteLine("Captured Pieces: ");
+            Console.Write("White: ");
+            printHashSet(match.capturedPieces(Color.White));
+            Console.Write("\nBlack: ");
+            ConsoleColor aux = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            printHashSet(match.capturedPieces(Color.Black));
+            Console.ForegroundColor = aux;
+            Console.WriteLine();
+        }
+
+        public static void printHashSet(HashSet<Piece> set){
+            Console.Write("[");
+            foreach(Piece p in set){
+                Console.Write(p + " ");
+            }
+            Console.Write("]");
+        }
+
         public static void printBoard(Board board){
                 for(int i=0; i<board.Lines; i++){
                 System.Console.Write(8 - i + " "); //Numerando as linhas
