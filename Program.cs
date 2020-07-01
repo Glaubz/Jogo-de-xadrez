@@ -12,29 +12,39 @@ namespace PROJETO_XADREZ
                 ChessMatch match = new ChessMatch();
 
                 while(!match.Finish){
-                    Console.Clear();
-                    Screen.printBoard(match.board);
-                    System.Console.WriteLine("\nRound: " + match._round);
-                    System.Console.WriteLine("Waiting " + match._currentPlayer + " move");
 
-                    System.Console.Write("\nOrigin: ");
-                    Position origin = Screen.readChessPosition().toPosition();
+                    try{
+                        Console.Clear();
+                        Screen.printBoard(match.board);
+                        System.Console.WriteLine("\nRound: " + match._round);
+                        System.Console.WriteLine("Waiting " + match._currentPlayer + " move");
 
-                    bool[,] possibleMovements = match.board.onePiece(origin).possibleMovements();
-                    
-                    Console.Clear();
-                    Screen.printBoard(match.board, possibleMovements);
+                        System.Console.Write("\nOrigin: ");
+                        Position origin = Screen.readChessPosition().toPosition();
+                        match.validateOriginPosition(origin);
 
-                    System.Console.Write("\nDestiny: ");
+                        bool[,] possibleMovements = match.board.onePiece(origin).possibleMovements();
+                        
+                        Console.Clear();
+                        Screen.printBoard(match.board, possibleMovements);
 
-                    Position destiny = Screen.readChessPosition().toPosition();
+                        System.Console.Write("\nDestiny: ");
+                        Position destiny = Screen.readChessPosition().toPosition();
+                        match.validateDestinyPosition(origin, destiny);
 
-                    match.realizeMove(origin, destiny);
+                        match.realizeMove(origin, destiny);
+                        
+                        //Screen.printBoard(match.board);
+                    }
+
+                    catch(BoardException e){
+                        System.Console.WriteLine(e.Message);
+                        Console.ReadKey();
+                    }
                 }
-
-                Screen.printBoard(match.board);
             }
-            catch(Exception e){
+
+            catch(BoardException e){
                 System.Console.WriteLine(e.Message);
             }
 

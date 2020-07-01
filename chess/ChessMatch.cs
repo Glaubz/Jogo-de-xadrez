@@ -31,6 +31,24 @@ namespace chess
             changePlayer();
         }
 
+        public void validateOriginPosition(Position position){
+            if(board.onePiece(position) == null){
+                throw new BoardException("Doesn't exist piece in the choosed position!");
+            }
+            if(_currentPlayer != board.onePiece(position).color){
+                throw new BoardException("The current position not belong you!");
+            }
+            if(!board.onePiece(position).existPossibleMovements()){
+                throw new BoardException("Don't have possible movements to the choosed piece!");
+            }
+        }
+
+        public void validateDestinyPosition(Position origin, Position destiny){
+            if(!board.onePiece(origin).canMoveFor(destiny)){
+                throw new BoardException("Destiny position not is valid!");
+            }
+        }
+
         private void changePlayer(){
             if(_currentPlayer == Color.White){
                 _currentPlayer = Color.Black;
@@ -41,15 +59,23 @@ namespace chess
         }
 
         private void putPieceS(){
+            board.putPiece(new Tower(board, Color.Black), new ChessPosition('c', 8).toPosition());
+            board.putPiece(new King(board, Color.Black), new ChessPosition('d', 8).toPosition());
+            board.putPiece(new Tower(board, Color.Black), new ChessPosition('e', 8).toPosition());
+            board.putPiece(new Tower(board, Color.Black), new ChessPosition('f', 8).toPosition());
             board.putPiece(new Tower(board, Color.Black), new ChessPosition('c', 7).toPosition());
-            board.putPiece(new King(board, Color.Black), new ChessPosition('d', 7).toPosition());
-            board.putPiece(new Tower(board, Color.Black), new ChessPosition('e',7).toPosition());
+            board.putPiece(new Tower(board, Color.Black), new ChessPosition('d', 7).toPosition());
+            board.putPiece(new Tower(board, Color.Black), new ChessPosition('e', 7).toPosition());
             board.putPiece(new Tower(board, Color.Black), new ChessPosition('f', 7).toPosition());
 
             board.putPiece(new Tower(board, Color.White), new ChessPosition('c', 1).toPosition());
             board.putPiece(new Tower(board, Color.White), new ChessPosition('d', 1).toPosition());
             board.putPiece(new King(board, Color.White), new ChessPosition('e', 1).toPosition());
             board.putPiece(new Tower(board, Color.White), new ChessPosition('f', 1).toPosition());
+            board.putPiece(new Tower(board, Color.White), new ChessPosition('c', 2).toPosition());
+            board.putPiece(new Tower(board, Color.White), new ChessPosition('d', 2).toPosition());
+            board.putPiece(new Tower(board, Color.White), new ChessPosition('e', 2).toPosition());
+            board.putPiece(new Tower(board, Color.White), new ChessPosition('f', 2).toPosition());
         }
 
     }

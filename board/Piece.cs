@@ -20,6 +20,20 @@ namespace board
             qtMovements++;
         }
 
+        public bool existPossibleMovements(){
+            bool[,] matrix = possibleMovements();
+            for(int i=0; i<board.Lines; i++){
+                for(int j=0; j<board.Columns; j++){
+                    if(matrix[i,j]) return true;
+                }
+            }
+            return false;
+        }
+
+        public bool canMoveFor(Position position){
+            return possibleMovements()[position.line, position.column];
+        }
+
         public abstract bool[,] possibleMovements();
 
     }
