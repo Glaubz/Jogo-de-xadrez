@@ -12,18 +12,20 @@ namespace chess
         public bool Finish { get; private set; }
         private HashSet<Piece> pieces;
         private HashSet<Piece> captured;
+        public bool Check { get; private set; }
 
         public ChessMatch(){
             board = new Board(8,8);
             _round = 1;
             _currentPlayer = Color.White;
             Finish = false;
+            Check = false;
             pieces = new HashSet<Piece>();
             captured = new HashSet<Piece>();
             putPieceS();
         }
 
-        public void executeMovement(Position origin, Position destiny){
+        public Piece executeMovement(Position origin, Position destiny){
             Piece p = board.removePiece(origin);
             p.incrementQteMovements();
             Piece capturedPiece = board.removePiece(destiny);
@@ -31,10 +33,33 @@ namespace chess
             if(capturedPiece != null){
                 captured.Add(capturedPiece);
             }
+            return capturedPiece;
+        }
+
+        public void undoMovement(Position origin, Position destiny, Piece capturedPiece){
+            Piece p = board.removePiece(destiny);
+            p.disproveQteMovements();
+            if(capturedPiece != null){
+                board.putPiece(capturedPiece, destiny);
+                captured.Remove(capturedPiece);
+            }
+            board.putPiece(p, origin);
         }
 
         public void realizeMove(Position origin, Position destiny){
-            executeMovement(origin, destiny);
+            Piece capturedPiece = executeMovement(origin, destiny);
+            if(inCheck(_currentPlayer)){
+                undoMovement(origin, destiny, capturedPiece);
+                throw new BoardException("You can't put yourself in check!");
+            }
+
+            if(inCheck(adversary(_currentPlayer))){
+                Check = true;
+            }
+            else{
+                Check = false;
+            }
+
             _round++;
             changePlayer();
         }
@@ -90,6 +115,38 @@ namespace chess
         public void putNewPiece(char column, int line, Piece piece){
             board.putPiece(piece, new ChessPosition(column, line).toPosition());
             pieces.Add(piece);
+        }
+
+        private Color adversary(Color color){
+            if(color == Color.White){
+                return Color.Black;
+            }
+            else{
+                return Color.White;
+            }
+        }
+
+        private Piece king(Color color){
+            foreach(Piece p in piecesInGame(color)){
+                if(p is King){
+                    return p;
+                }
+            }
+            return null;
+        }
+
+        public bool inCheck(Color color){
+            Piece K = king(color);
+            if(K == null){
+                throw new BoardException("Don't have " + color + "king on the board!");
+            }
+            foreach(Piece p in piecesInGame(adversary(color))){
+                bool[,] matrix = p.possibleMovements();
+                if(matrix[K.Position.line, K.Position.column]){
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void putPieceS(){

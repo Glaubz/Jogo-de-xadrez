@@ -20,6 +20,10 @@ namespace board
             qtMovements++;
         }
 
+        public void disproveQteMovements(){
+            qtMovements--;
+        }
+
         public bool existPossibleMovements(){
             bool[,] matrix = possibleMovements();
             for(int i=0; i<board.Lines; i++){

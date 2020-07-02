@@ -14,6 +14,9 @@ namespace board
             printCapturedPieces(match);
             System.Console.WriteLine("\nRound: " + match._round);
             System.Console.WriteLine("Waiting " + match._currentPlayer + " move");
+            if(match.Check){
+                Console.WriteLine("CHECK!");
+            }
         }
 
         public static void printCapturedPieces(ChessMatch match){
