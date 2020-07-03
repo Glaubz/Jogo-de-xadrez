@@ -13,9 +13,15 @@ namespace board
             Console.WriteLine();
             printCapturedPieces(match);
             System.Console.WriteLine("\nRound: " + match._round);
-            System.Console.WriteLine("Waiting " + match._currentPlayer + " move");
-            if(match.Check){
-                Console.WriteLine("CHECK!");
+            if(!match.Finish){
+                System.Console.WriteLine("Waiting " + match._currentPlayer + " move");
+                if(match.Check){
+                    Console.WriteLine("CHECK!");
+                }
+            }
+            else{
+                Console.WriteLine("CHECKMATE!");
+                Console.WriteLine("Winner: " + match._currentPlayer);
             }
         }
 

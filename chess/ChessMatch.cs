@@ -60,8 +60,13 @@ namespace chess
                 Check = false;
             }
 
-            _round++;
-            changePlayer();
+            if(checkmateTest(adversary(_currentPlayer))){
+                Finish = true;
+            }
+            else{
+                _round++;
+                changePlayer();
+            }
         }
 
         public void validateOriginPosition(Position position){
@@ -147,6 +152,30 @@ namespace chess
                 }
             }
             return false;
+        }
+
+        public bool checkmateTest(Color color){
+            if(!inCheck(color)){
+                return false;
+            }
+            foreach(Piece p in piecesInGame(color)){
+                bool[,] matrix = p.possibleMovements();
+                for(int i=0; i<board.Lines; i++){
+                    for(int j=0; j<board.Columns; j++){
+                        if(matrix[i, j]){
+                            Position origin =p.Position;
+                            Position destiny = new Position(i,j);
+                            Piece capturedPiece = executeMovement(origin, destiny);
+                            bool checkTest = inCheck(color);
+                            undoMovement(origin, destiny, capturedPiece);
+                            if(!checkTest){
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+            return true;
         }
 
         private void putPieceS(){
